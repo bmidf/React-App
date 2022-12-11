@@ -15,7 +15,7 @@ function NewProducts() {
     }
     fetchData();
   }, []);
-
+console.log()
   const history = useHistory();
 
   return (
