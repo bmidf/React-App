@@ -35,7 +35,17 @@ function ItemDetails() {
     }
     fetchData();
   }, [id]);
-
+  console.log(item);
+  // on add to card click save the item in the local storage
+  const addToCart = () => {
+    let cart = [];
+    if (localStorage.getItem('cart')) {
+      cart = JSON.parse(localStorage.getItem('cart'));
+    }
+    cart.push(item);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    // history.push('/cart');
+  }
   return (
     <Container>
       <Breadcrumb listTag="div" className="breadDecor">
@@ -65,7 +75,7 @@ function ItemDetails() {
             <Button style={{ marginRight: '5px'}} variant="outline-secondary">APOLLO</Button>
           </Col>
           <Row>
-            <Button style={{ margin: '10px', backgroundColor: '#004197', borderRadius: '1px'}}>ADD TO CART</Button>
+            <Button onClick={addToCart} style={{ margin: '10px', backgroundColor: '#004197', borderRadius: '1px'}}>ADD TO CART</Button>
           </Row>
           <Row><p>{item.description}</p></Row>
           <Row>
@@ -109,7 +119,7 @@ function ItemDetails() {
                         <img className="imageProduct" src={item.category.image} alt={item.title} />
                       </div>
                       <div className="titleNewProduct">
-                        <a>{item.title}</a>
+                        {item.title}
                       </div>
                 </Link>
               ))}

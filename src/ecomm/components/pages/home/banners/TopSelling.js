@@ -5,17 +5,14 @@ import { Link, useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 
-const TopSelling = () => {
-        const [items, setItems] = useState([]);
-      
-        useEffect(() => {
-          async function fetchData() {
-            const response = await fetch('https://api.escuelajs.co/api/v1/products?limit=2&offset=2');
-            const data = await response.json();
-            setItems(data);
-          }
-          fetchData();
-        }, []);
+const TopSelling = (items) => {
+    const topSelling = items.items
+
+
+    // filter top selling to 2 items
+    const topSellingFilter = topSelling.filter((item, index) => index < 2)
+
+
       
         const history = useHistory();
       
@@ -31,13 +28,13 @@ const TopSelling = () => {
                             <button>VIEW ALL</button>
                         </div>
                     <div className="weeklyColumn">
-                {items.map(item => (
+                {topSellingFilter.map(item => (
                     <Link key={item.id} to={`/item/${item.id}`} onClick={() => history.push(`/item/${item.id}`)}>
                         <div className="weeklyImageBoxProduct">
                             <img className="imageProduct" src={item.category.image} alt={item.title} />
                         </div>
                         <div className="titleWeeklyProduct">
-                            <a>{item.title}<br/>${item.price}</a>
+                            {item.title}<br/>${item.price}
                         </div>
                     </Link>
                 ))}

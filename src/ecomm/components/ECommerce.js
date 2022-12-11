@@ -20,7 +20,7 @@ function ECommerce() {
             <Router>
                 <Header/>
                 <Switch>
-                    <Route exact path="/react-app">
+                    <Route path="/react-app">
                         <Home  />
                         {/* <ServiceBanner/>
                         <div className="boxNewProducts">

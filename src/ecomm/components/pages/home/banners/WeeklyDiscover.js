@@ -5,17 +5,11 @@ import { Link, useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 
-const WeeklyDiscover = () => {
-        const [items, setItems] = useState([]);
-      
-        useEffect(() => {
-          async function fetchData() {
-            const response = await fetch('https://api.escuelajs.co/api/v1/products?limit=2&offset=2');
-            const data = await response.json();
-            setItems(data);
-          }
-          fetchData();
-        }, []);
+const WeeklyDiscover = (items) => {
+    const weeklyDiscver = items.items
+
+    // filter top selling to 2 items
+    const weeklyDiscoverFilter = weeklyDiscver.filter((item, index) => index < 2)
       
         const history = useHistory();
       
@@ -34,13 +28,13 @@ const WeeklyDiscover = () => {
                     <button>VIEW ALL</button>
                 </div>
                 <div className="weeklyColumn">
-                    {items.map(item => (
+                    {weeklyDiscoverFilter.map(item => (
                         <Link key={item.id} to={`/item/${item.id}`} onClick={() => history.push(`/item/${item.id}`)}>
                             <div className="weeklyImageBoxProduct">
                                 <img className="imageProduct" src={item.category.image} alt={item.title} />
                             </div>
                             <div className="titleWeeklyProduct">
-                                <a><br/>{item.title}</a>
+                                <br/>{item.title}
                             </div>
                             <div>
                                 <p className='lineThroughProduct1'>${item.price}<span className='lineThroughProduct'>$1000</span></p>
