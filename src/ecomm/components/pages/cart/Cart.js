@@ -18,10 +18,6 @@ const removeItem = (id) => {
     setItems(newItems)
     localStorage.removeItem('cart', JSON.stringify(newItems))
 }
-
-
-
-
     return (
         <div>
             <Container>
