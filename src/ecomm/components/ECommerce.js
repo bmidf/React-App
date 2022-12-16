@@ -16,20 +16,12 @@ import Header from '../re-components/Header';
 import Home from "./pages/home/Home";
 function ECommerce() {
     return (
-        <Container fixed>
+        <div fixed>
             <Router>
                 <Header/>
                 <Switch>
                     <Route path="/react-app">
                         <Home  />
-                        {/* <ServiceBanner/>
-                        <div className="boxNewProducts">
-                            <span>NEW</span>
-                            <span className="boxNewProductsSpan2">PRODUCTS</span>
-                        </div>
-                        <NewProducts/>
-                        <WeeklyDiscover/>
-                        <TopSelling/> */}
                     </Route>
                     <Route path="/Shop">
                         <Shop/>
@@ -42,7 +34,7 @@ function ECommerce() {
                     </Route>
                 </Switch>
             </Router>
-        </Container>
+        </div>
     );
 }
 

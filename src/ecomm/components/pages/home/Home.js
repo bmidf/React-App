@@ -5,23 +5,17 @@ import WeeklyDiscover from './banners/WeeklyDiscover'
 import TopSelling from './banners/TopSelling'
 import '../../com-css/header.css'
 import { useEffect, useState } from 'react';
+import Companies from './banners/Companies';
 function Home() {
-  const [items, setItems] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('https://api.escuelajs.co/api/v1/products?limit=10&offset=10');
-      const data = await response.json();
-      setItems(data);
-    }
-    fetchData();
-  }, []);
+  // console.log(items.events);
   return (
       <>
         <ServiceBanner/>
-        <NewProducts items={items}/>
-        <TopSelling items={items}/>
-        <WeeklyDiscover items={items}/>
+        <NewProducts/>
+        <Companies/>
+        {/* <TopSelling items={items}/>
+        <WeeklyDiscover items={items}/> */}
       </>
   );
 }
