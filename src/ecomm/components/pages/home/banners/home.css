@@ -55,9 +55,7 @@
   width: 70%;
 }
 .imageBoxProduct{
-  height: 400px;
   margin: 0px 10px 0px 10px;
-  background-color: #f8f8f8;
 }
 .titleNewProduct{
   font-family: 'pooppins';
@@ -170,4 +168,11 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+img{
+  width: 100%;
+}
+
+body{
+  overflow-x: hidden;
 }

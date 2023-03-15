@@ -1,26 +1,32 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import {BsSearch,BsPersonCircle,BsBag} from "react-icons/bs";
+import Logo from "../assets/images/logo.png"
+import { Container } from 'react-bootstrap';
 const Header = () => {
     return (
+        <Container>
         <div className="commHeader">
-            <div className="searchHeader">
-                <BsSearch/>
-            </div>
+               <Link to="/react-app" className="headerText headerHome"> 
+                       <img src={Logo} alt="logo" className="logo"/>
+                        </Link>
+            
             <div className="middleHeader">
-                <Link to="/Shop" className="headerText" >SHOP</Link>
-                <p className="headerText">ESSENTIALS</p>
-                <Link exact to="/react-app" className="headerText headerHome"> 
-                        <span>Macc<br/></span>
-                        <span className="headerHomeSpan">Essentials</span></Link>
+         
+                <Link to="/Shop" className="headerText" >All events</Link>
+                
                 <p className="headerText">BEST SELLERS</p>
                 <p className="headerText">ABOUT US</p>
             </div>
             <div className="rightHeader">
+            <div className="searchHeader">
+                <BsSearch/>
+            </div>
             <BsPersonCircle/>
             <Link to="/Cart"><BsBag/></Link>
             </div>
         </div>
+        </Container>
     )
 }
 export default Header
